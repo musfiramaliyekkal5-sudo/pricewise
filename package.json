@@ -1,0 +1,16 @@
+{
+  "name": "pricewise",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-backed product price comparison for Indian shoppers",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
+    "check": "node --check server.js && node --check src/demo-catalog.js && node --check src/catalog.js && node --check src/retailers.js && node --check src/integrations/json-feed.js && node --check src/integrations/flipkart.js && node --check public/app.js",
+    "test": "node --test"
+  }
+}

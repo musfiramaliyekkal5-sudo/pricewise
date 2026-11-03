@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f8f5">
+    <meta name="description" content="PriceWise compares product prices, offers and discounts across authorised Indian retailers so you can find the right price with confidence.">
+    <title>PriceWise — Compare Smart. Shop for Less.</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <aside class="data-mode-banner" id="data-mode-banner" role="status" aria-live="polite" hidden></aside>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#/" aria-label="PriceWise home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 34 34" fill="none">
+              <path d="M17 3.5 28.7 10v14L17 30.5 5.3 24V10L17 3.5Z" stroke="currentColor" stroke-width="2.2" />
+              <path d="M11 18.2 15 22l8-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">Price<span class="brand-accent">Wise</span></span>
+            <span class="brand-tagline">Compare Smart. Shop for Less.</span>
+          </span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#/" class="nav-link" data-nav="home">Home</a>
+          <a href="#/deals" class="nav-link" data-nav="deals">Deals</a>
+          <a href="#/search" class="nav-link" data-nav="search">Compare prices</a>
+          <a href="#/retailers" class="nav-link" data-nav="retailers">Retailers</a>
+          <a href="#/about" class="nav-link" data-nav="about">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="saved-nav" id="saved-nav" type="button" aria-label="Show saved products">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg>
+            <span>Saved</span><span class="saved-count" id="saved-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home-view">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow"><span class="live-dot"></span> India&rsquo;s independent price comparison</p>
+            <h1>Compare smart.<br><span>Shop for less.</span></h1>
+            <p class="hero-copy">Find the same product across authorised Indian retailers, compare current prices and real offers, then buy directly from the store you choose.</p>
+            <form class="search-form hero-search" id="search-form" role="search">
+              <label class="sr-only" for="search-input">Search products, brands or model numbers</label>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></svg>
+              <input id="search-input" name="q" type="search" placeholder="Search a product, brand or model number…" autocomplete="off" list="search-suggestions" maxlength="120">
+              <datalist id="search-suggestions"></datalist>
+              <button class="button button-primary" type="submit">Compare prices <span aria-hidden="true">→</span></button>
+            </form>
+            <p class="search-hint" id="search-hint">Live retailer offers appear only when an authorised data source is configured.</p>
+            <div class="hero-badges" aria-label="What PriceWise does">
+              <span><b>✓</b> Exact variants</span>
+              <span><b>₹</b> INR pricing</span>
+              <span><b>↗</b> Direct retailer links</span>
+            </div>
+          </div>
+          <div class="hero-panel" aria-live="polite">
+            <div class="hero-spotlight skeleton-card" id="hero-spotlight">
+              <span class="skeleton skeleton-line short"></span>
+              <span class="skeleton skeleton-image"></span>
+              <span class="skeleton skeleton-line"></span>
+              <span class="skeleton skeleton-line short"></span>
+            </div>
+          </div>
+        </div>
+        <div class="trust-strip" aria-label="PriceWise principles">
+          <div><span class="trust-mark">01</span><span><strong>Authorised sources</strong>No scraping or bypassing retailer controls</span></div>
+          <div><span class="trust-mark">02</span><span><strong>Clear freshness</strong>Every offer shows when it was last verified</span></div>
+          <div><span class="trust-mark">03</span><span><strong>Variant-aware matching</strong>Size, colour, pack and model stay separate</span></div>
+          <div><span class="trust-mark">04</span><span><strong>Safe destinations</strong>Buy Now opens only validated HTTPS product pages</span></div>
+        </div>
+      </section>
+
+      <div id="home-extras">
+        <section class="section categories-section" aria-labelledby="categories-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">EXPLORE THE CATALOGUE</p>
+              <h2 id="categories-title">Shop by category</h2>
+            </div>
+            <p class="section-note" id="categories-note">Categories are built from the products returned by the active data source.</p>
+          </div>
+          <div class="chip-row" id="home-categories">
+            <span class="skeleton skeleton-chip"></span><span class="skeleton skeleton-chip"></span><span class="skeleton skeleton-chip"></span>
+          </div>
+          <div class="category-grid" id="home-category-grid"></div>
+        </section>
+
+        <section class="section deals-section" aria-labelledby="deals-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BEST DISCOUNTS</p>
+              <h2 id="deals-title">Today&rsquo;s best deals</h2>
+            </div>
+            <a class="text-link" href="#/deals">See all deals <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="product-grid product-grid-home" id="home-deals">
+            <div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="recent-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">FRESH FROM THE SOURCES</p>
+              <h2 id="recent-title">Recently updated products</h2>
+            </div>
+            <p class="section-note" id="recent-note">Ordered by the most recent source-provided price timestamp.</p>
+          </div>
+          <div class="trending-grid" id="home-trending">
+            <div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div>
+          </div>
+        </section>
+
+        <section class="section retailer-section" aria-labelledby="coverage-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">RETAILER COVERAGE</p>
+              <h2 id="coverage-title">Authorised integration status</h2>
+            </div>
+            <a class="text-link" href="#/retailers">View all retailers <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="section-note">A retailer appears as connected only after its authorised feed responds. Everyone else is shown as awaiting access &mdash; never as a fake integration.</p>
+          <div class="retailer-strip" id="home-retailers">
+            <span class="skeleton skeleton-chip"></span><span class="skeleton skeleton-chip"></span><span class="skeleton skeleton-chip"></span><span class="skeleton skeleton-chip"></span>
+          </div>
+        </section>
+      </div>
+
+      <section class="results-section" id="results-view" hidden>
+        <div class="results-hero">
+          <a class="back-link" href="#/" id="results-back">← Home</a>
+          <p class="eyebrow" id="results-eyebrow">PRICE COMPARISON</p>
+          <h1 id="results-title">Explore prices</h1>
+          <p class="section-subtitle" id="results-summary"></p>
+          <form class="search-form compact-search" id="results-search-form" role="search">
+            <label class="sr-only" for="results-search-input">Search products</label>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></svg>
+            <input id="results-search-input" name="q" type="search" placeholder="Search products, brands or model numbers" maxlength="120">
+            <button class="button button-dark" type="submit">Search</button>
+          </form>
+        </div>
+
+        <div class="results-layout">
+          <aside class="filters" aria-label="Filter products">
+            <div class="filters-heading">
+              <h2>Filters</h2>
+              <button id="clear-filters" class="text-button" type="button">Clear all</button>
+            </div>
+            <label class="filter-label" for="category-filter">Category</label>
+            <select id="category-filter"><option value="">All categories</option></select>
+            <label class="filter-label" for="brand-filter">Brand</label>
+            <select id="brand-filter"><option value="">All brands</option></select>
+            <label class="filter-label" for="retailer-filter">Retailer</label>
+            <select id="retailer-filter"><option value="">All retailers</option></select>
+            <div class="filter-pair">
+              <div>
+                <label class="filter-label" for="min-price">Minimum price</label>
+                <div class="price-input"><span>₹</span><input id="min-price" type="number" min="0" step="1" placeholder="Any" inputmode="numeric"></div>
+              </div>
+              <div>
+                <label class="filter-label" for="max-price">Maximum price</label>
+                <div class="price-input"><span>₹</span><input id="max-price" type="number" min="0" step="1" placeholder="Any" inputmode="numeric"></div>
+              </div>
+            </div>
+            <label class="filter-label" for="min-discount">Minimum discount</label>
+            <div class="price-input"><input id="min-discount" type="number" min="1" max="100" step="1" placeholder="Any discount" inputmode="numeric"><span>%</span></div>
+            <label class="filter-label" for="offer-filter">Offer type</label>
+            <select id="offer-filter">
+              <option value="">All offers</option>
+              <option value="discount">Discounted price</option>
+              <option value="regular">Regular price</option>
+              <option value="coupon">Coupon offer</option>
+              <option value="cashback">Cashback offer</option>
+              <option value="price-drop">Recorded price drop</option>
+            </select>
+            <label class="filter-label" for="stock-filter">Stock status</label>
+            <select id="stock-filter">
+              <option value="">Any stock status</option>
+              <option value="verified">Recently verified in stock</option>
+              <option value="in">In stock or explicitly available</option>
+              <option value="out">Out of stock</option>
+              <option value="unknown">Unknown or unverified</option>
+            </select>
+            <label class="check-filter"><input id="available-filter" type="checkbox"><span>Only recently verified in-stock offers</span></label>
+            <div class="source-note">
+              <span class="source-note-icon">i</span>
+              <p id="source-note-copy">“Verified” requires a source-provided in-stock status and an update within the last 24 hours.</p>
+            </div>
+          </aside>
+
+          <div class="results-content">
+            <div class="results-toolbar">
+              <div class="result-status" id="result-status" aria-live="polite"></div>
+              <label class="sort-control">Sort by
+                <select id="sort-select" aria-label="Sort products">
+                  <option value="relevance">Recommended</option>
+                  <option value="verified">Cheapest verified</option>
+                  <option value="price-asc">Price: low to high</option>
+                  <option value="price-desc">Price: high to low</option>
+                  <option value="discount">Largest discount</option>
+                  <option value="name">Name: A to Z</option>
+                  <option value="updated">Recently updated</option>
+                </select>
+              </label>
+            </div>
+            <div class="product-grid" id="product-grid"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <span class="empty-icon">⌕</span>
+              <h2 id="empty-title">No matching offers yet</h2>
+              <p id="empty-copy">Connect an authorised retailer feed to see real product listings here.</p>
+              <div class="empty-actions">
+                <button class="button button-outline" type="button" id="empty-retry">Retry</button>
+                <a class="button button-ghost" href="#/retailers">How data sources work</a>
+              </div>
+            </div>
+            <button class="button button-outline load-more" id="load-more" type="button" hidden>Load more products</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-detail" id="detail-view" hidden>
+        <a class="back-link" href="#/search" id="detail-back">← Back to results</a>
+        <div id="detail-content"></div>
+      </section>
+
+      <section class="info-page" id="retailers-view" hidden>
+        <div class="info-hero">
+          <p class="eyebrow">TRANSPARENT DATA CONNECTIONS</p>
+          <h1>Retailer integrations<br><span>without the guesswork.</span></h1>
+          <p>PriceWise only labels a retailer as connected after an authorised product source responds. This page shows exactly what is configured, what is missing, and what access each retailer requires.</p>
+        </div>
+        <div class="retailer-summary" id="retailers-summary" aria-live="polite"></div>
+        <div class="retailer-grid" id="retailers-content"></div>
+        <div class="disclosure">
+          <h2>How to connect a retailer</h2>
+          <p>Add an entry to <code>PRICEWISE_FEEDS</code> in your <code>.env</code> file using the documented feed contract, then set the credential variables named on the retailer card. PriceWise never scrapes retailer websites, bypasses access controls, or invents product data.</p>
+          <p>Some retailers do not offer a public product API. In that case the retailer stays visibly unconnected until you obtain authorised affiliate or partner access and a compatible feed.</p>
+        </div>
+      </section>
+
+      <section class="info-page" id="about-view" hidden>
+        <div class="info-hero">
+          <p class="eyebrow">THE PRICEWISE PROMISE</p>
+          <h1>Better comparisons<br><span>start with better data.</span></h1>
+          <p>PriceWise is built to help Indian shoppers compare like-for-like products without confusing old prices, lookalikes, or unsupported claims for real deals.</p>
+        </div>
+        <div class="info-grid">
+          <article class="info-card"><span class="info-number">01</span><h2>Authorised sources only</h2><p>Offers come from retailer APIs and feeds the operator is authorised to use. We do not scrape stores or bypass access controls.</p></article>
+          <article class="info-card"><span class="info-number">02</span><h2>Prices with context</h2><p>Every offer shows its source or fetch time and freshness. “Verified” requires a source-reported in-stock status from a recent authorised fetch.</p></article>
+          <article class="info-card"><span class="info-number">03</span><h2>Careful product matching</h2><p>Listings are grouped only when they share a product identifier or an explicit canonical match key, including the exact variant.</p></article>
+          <article class="info-card"><span class="info-number">04</span><h2>Direct store links</h2><p>Buy Now uses the exact product URL supplied by the configured feed and is restricted to the feed's approved retailer domains.</p></article>
+        </div>
+        <section class="source-status-panel">
+          <div>
+            <p class="eyebrow">DATA CONNECTIONS</p>
+            <h2>Connected source status</h2>
+            <p id="source-status-copy">Checking configured feed connections…</p>
+          </div>
+          <div id="source-list" class="source-list" aria-live="polite"></div>
+        </section>
+        <div class="disclosure">
+          <h2>About our data</h2>
+          <p>When no valid authorised retailer feed is configured, PriceWise shows no products and no placeholder prices. Add your Flipkart Affiliate API credentials to load real listings. When feeds are configured, only offers returned by those feeds are displayed, including when a feed fails or returns no listings.</p>
+          <p>Retailer names, images, prices, stock status and product links are displayed only when supplied by an authorised source. Unknown delivery charges, seller details or timestamps are shown as unknown rather than guessed.</p>
+          <p>PriceWise is an independent comparison tool and is not affiliated with the retailers shown. Retailer trademarks remain the property of their respective owners. Always confirm the final price, delivery costs and availability on the retailer's website before buying.</p>
+          <div class="legal-links"><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/contact">Contact</a></div>
+        </div>
+      </section>
+
+      <section class="info-page legal-page" id="legal-view" hidden>
+        <a class="back-link" href="#/about">← About PriceWise</a>
+        <div id="legal-content"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="brand footer-brand" href="#/" aria-label="PriceWise home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none"><path d="M17 3.5 28.7 10v14L17 30.5 5.3 24V10L17 3.5Z" stroke="currentColor" stroke-width="2.2" /><path d="M11 18.2 15 22l8-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <span class="brand-text"><span class="brand-name">Price<span class="brand-accent">Wise</span></span><span class="brand-tagline">Compare Smart. Shop for Less.</span></span>
+        </a>
+        <p>Independent comparison · INR prices · Data mode always disclosed</p>
+        <nav aria-label="Footer navigation"><a href="#/deals">Deals</a><a href="#/retailers">Retailers</a><a href="#/saved">Saved</a><a href="#/recent">Recently viewed</a><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/contact">Contact</a></nav>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> PriceWise</span><span>PriceWise is not a checkout. Purchases happen on the retailer's website.</span></div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
